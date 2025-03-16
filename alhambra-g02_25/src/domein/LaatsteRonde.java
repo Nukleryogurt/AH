@@ -1,9 +1,17 @@
 package domein;
 
-public class LaatsteRonde extends Ronde {
+public class LaatsteRonde {
+    private boolean laatsteRonde;
 
-	public LaatsteRonde() {
-		// TODO Auto-generated constructor stub
-	}
+    public LaatsteRonde() {
+        this.laatsteRonde = false;
+    }
 
+    public void startLaatsteRonde() {
+        this.laatsteRonde = true;
+    }
+
+    public boolean isLaatsteRonde() {
+        return laatsteRonde;
+    }
 }

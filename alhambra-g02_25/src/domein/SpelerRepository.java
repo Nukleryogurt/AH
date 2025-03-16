@@ -27,8 +27,7 @@ public class SpelerRepository {
         return mapper.geefAlleSpelers();
     }
 
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public int size() {
+        return mapper.geefAlleSpelers().size();
+    }
 }

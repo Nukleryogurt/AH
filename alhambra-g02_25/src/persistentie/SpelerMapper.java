@@ -11,13 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpelerMapper {
-
-    private static final String INSERT_SPELER = "INSERT INTO G02.speler (gebruikersnaam, geboortejaar, aantalOverwinningen, aantalGespeeld)"
-            + "VALUES (?, ?, ?, ?)";
+    private static final String INSERT_SPELER = "INSERT INTO G02.speler (gebruikersnaam, geboortejaar, aantalOverwinningen, aantalGespeeld) VALUES (?, ?, ?, ?)";
     private static final String GEEF_SPELER = "SELECT * FROM G02.speler WHERE gebruikersnaam = ?";
-    private static final String UPDATE_SPELER = "UPDATE G02.speler"
-            + " SET geboortejaar = ?, aantalGewonnen = ?, aantalGespeeld = ?"
-            + " WHERE gebruikersnaam = ?";
+    private static final String UPDATE_SPELER = "UPDATE G02.speler SET geboortejaar = ?, aantalGewonnen = ?, aantalGespeeld = ? WHERE gebruikersnaam = ?";
     private static final String GEEF_ALLE_SPELERS = "SELECT * FROM G02.speler";
 
     public void voegToe(Speler speler) {

@@ -8,14 +8,15 @@ import java.util.Objects;
 public class Speler {
     private String gebruikersnaam;
     private int geboortejaar;
-    private int score = 0;
     private int aantalOverwinningen, aantalGespeeld;
     private String kleur = null;
 
     static final List<String> BESCHIKBARE_KLEUREN = Arrays.asList("blauw", "groen", "wit", "geel", "oranje", "rood");
+    private static SpelerRepository spelerRepository = new SpelerRepository();
 
     public Speler(String gebruikersnaam, int geboortejaar) {
         this(gebruikersnaam, geboortejaar, 0, 0);
+        spelerRepository.voegToe(this);
     }
 
     public Speler(String gebruikersnaam, int geboortejaar, int aantalGewonnen, int aantalGespeeld) {
@@ -23,6 +24,7 @@ public class Speler {
         setGeboortejaar(geboortejaar);
         setAantalOverwinningen(aantalGewonnen);
         setAantalGespeeld(aantalGespeeld);
+        spelerRepository.voegToe(this);
     }
 
     public String getGebruikersnaam() {
@@ -34,6 +36,8 @@ public class Speler {
             throw new IllegalArgumentException("Naam mag niet leeg of een spatie bevatten.");
         if (gebruikersnaam.length() < 6)
             throw new IllegalArgumentException("Naam mag niet korter zijn dan 6 karakters.");
+        if (spelerRepository.bestaatSpeler(gebruikersnaam))
+            throw new IllegalArgumentException("Gebruikersnaam bestaat al");
         this.gebruikersnaam = gebruikersnaam;
     }
 
@@ -85,28 +89,24 @@ public class Speler {
         }
     }
 
-    public void gewonnen() {
+    private void gewonnen() {
+        /** Verhoogt aantalGewonnen met 1. **/
         this.setAantalOverwinningen(this.aantalOverwinningen + 1);
     }
 
-    public void gespeeld() {
+    private void gespeeld() {
+        /** Verhoogt aantalGespeeld met 1. **/
         this.setAantalGespeeld(this.aantalGespeeld + 1);
     }
 
-    public void verhoogScore(int punten) {
-        this.score += punten;
-    }
-
-    public int getScore() {
-        return this.score;
-    }
-
+    // Controleer het aantal spelers
     public static void controleerAantalSpelers(int aantalSpelers) {
         if (aantalSpelers < 3 || aantalSpelers > 6) {
             throw new IllegalArgumentException("Het spel heeft minimaal 3 en maximaal 6 spelers.");
         }
     }
 
+    // unieke naam
     @Override
     public int hashCode() {
         return Objects.hash(gebruikersnaam);

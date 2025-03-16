@@ -1,23 +1,36 @@
 package domein;
 
+import utils.BeschikbareKleuren;
+import persistentie.SpelerMapper;
+
+import java.util.List;
+
 public class DomeinController {
+    private SpelerMapper spelerMapper;
+    private Spel huidigSpel;
 
-	private final SpelerRepository spelerRepository;
+    public DomeinController() {
+        spelerMapper = new SpelerMapper();
+    }
 
-	public DomeinController() {
-		spelerRepository = new SpelerRepository();
-	}
+    public void registreerSpeler(String gebruikersnaam, int geboortejaar) {
+        Speler speler = new Speler(gebruikersnaam, geboortejaar);
+        spelerMapper.voegToe(speler);
+    }
 
-	public void registreerSpeler(String gebruikersnaam, int geboortejaar) {
-		Speler nieuweSpeler = new Speler(gebruikersnaam, geboortejaar);
-		spelerRepository.voegToe(nieuweSpeler);
-	}
+    public List<Speler> geefAlleSpelers() {
+        return spelerMapper.geefAlleSpelers();
+    }
 
-	// TODO:
-	public void startNieuwSpel() {
-		Spel spel1 = new Spel();
-		spel1.startSpel();
+    public void startNieuwSpel(List<Speler> geselecteerdeSpelers, List<BeschikbareKleuren> geselecteerdeKleuren) {
+        huidigSpel = new Spel();
+        for (int i = 0; i < geselecteerdeSpelers.size(); i++) {
+            huidigSpel.voegSpelerToe(geselecteerdeSpelers.get(i), geselecteerdeKleuren.get(i));
+        }
+        huidigSpel.startSpel();
+    }
 
-	}
-
+    public Spel getHuidigSpel() {
+        return huidigSpel;
+    }
 }

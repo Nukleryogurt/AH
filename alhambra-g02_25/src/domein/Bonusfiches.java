@@ -1,26 +1,16 @@
 package domein;
 
+import java.util.Random;
+
 public class Bonusfiches {
+    private int waarde;
 
-	private int waarde;
+    public Bonusfiches() {
+        Random rand = new Random();
+        this.waarde = rand.nextInt(3) + 1; // Random waarde tussen 1 en 3
+    }
 
-	public Bonusfiches() {
-	}
-
-	public int getWaarde() {
-		return waarde;
-	}
-
-	public void setWaarde(int waarde) {
-		double randomGetal = Math.random();
-		if (randomGetal <= 0.33) {
-			waarde = 1;
-		} else if (randomGetal <= 0.66) {
-			waarde = 2;
-		} else
-			waarde = 3;
-
-		this.waarde = waarde;
-	}
-
+    public int getWaarde() {
+        return waarde;
+    }
 }
