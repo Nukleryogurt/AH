@@ -55,13 +55,15 @@ class SpelerTest
 	        
 	    }
 	  //Als de naam al bestaat wordt er exception gegooid
+	  
+	  //GebruikersnaamException toegevoegd - Can
 	  @Test
 	   void OngeldigeGebruikersnaam_NaamBestaatAll_werpException() {
 
 
 	        new Speler("Avatar1234", 2000); // Eerste keer moet lukken
 
-	        assertThrows(IllegalArgumentException.class, () -> {
+	        assertThrows(GebruikersnaamInGebruikException.class, () -> {
              new Speler("Avatar1234", 1995);// Tweede keer moet falen
 	        }); 
 	    }
