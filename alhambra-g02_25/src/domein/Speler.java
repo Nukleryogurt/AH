@@ -25,10 +25,10 @@ public class Speler {
 			spelerRepository.voegToe(this);
 		}
 
-		public Speler(String gebruikersnaam, int geboortejaar, int aantalGewonnen, int aantalGespeeld) {
+		public Speler(String gebruikersnaam, int geboortejaar, int aantalOverwinningen, int aantalGespeeld) {
 			setGebruikersnaam(gebruikersnaam);
 			setGeboortejaar(geboortejaar);
-			setAantalOverwinningen(aantalGewonnen);
+			setAantalOverwinningen(aantalOverwinningen);
 			setAantalGespeeld(aantalGespeeld);
 			spelerRepository.voegToe(this);
 		}
