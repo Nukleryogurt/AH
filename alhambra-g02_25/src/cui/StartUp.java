@@ -1,14 +1,14 @@
 package cui;
 
+import java.util.Scanner;
+
 import domein.DomeinController;
 
 public class StartUp {
 
-	public StartUp() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public static void main(String[] args) {
-		new SpelApplicatie(new DomeinController()).start();
+		Scanner invoer = new Scanner(System.in);
+        new SpelApplicatie(new DomeinController(), invoer).start();
+        invoer.close();
 	}
 }

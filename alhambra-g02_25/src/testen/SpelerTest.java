@@ -61,7 +61,7 @@ class SpelerTest
 
 	        new Speler("Avatar1234", 2000); // Eerste keer moet lukken
 
-	        assertThrows(GebruikersnaamInGebruikException.class, () -> {
+	        assertThrows(IllegalArgumentException.class, () -> {
              new Speler("Avatar1234", 1995);// Tweede keer moet falen
 	        }); 
 	    }

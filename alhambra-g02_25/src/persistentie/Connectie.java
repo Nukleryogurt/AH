@@ -1,4 +1,4 @@
-	package persistentie;
+package persistentie;
 
 public class Connectie {
 
