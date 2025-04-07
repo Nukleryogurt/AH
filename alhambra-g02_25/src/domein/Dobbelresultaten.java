@@ -6,8 +6,9 @@ import java.util.List;
 public class Dobbelresultaten extends Gebieden {
 	private int resultaat;
 	private int beloning1;
-	
+	private List<Speler> gekozenSpelers  = new ArrayList<>();
 	private int beloning2;
+	private Fiche huidigefiche;
 	
 	public int getResultaat() {
 		return resultaat;
